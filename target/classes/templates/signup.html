@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Sign Up</title>
+	<link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+
+<body>
+	<form action="addUser" style="border:1px solid #ccc" method="post">
+		<div class="container">
+			<h3>Sign Up</h3>
+			<p>Please fill in this form to create an account.</p>
+			<hr>
+<div class="input">
+			<label for="username"><b>First Name</b></label>
+			<input type="text" placeholder="Enter First Name" name="username" required>
+</div >
+<div class="input">
+			<label for="lastname"><b>Last Name</b></label>
+			<input type="text" placeholder="Enter Last Name" name="lastname" required>
+</div>
+<div class="input">
+			<label for="email"><b>Email</b></label>
+			<input style="margin-left:38px" type="text" placeholder="Enter Email" name="email" required>
+</div>
+<div class="input">
+			<label for="password"><b>Password</b></label>
+			<input style="margin-left:7px" type="password" placeholder="Enter Password" name="password" required>
+</div>
+<div class="input">
+			<label for="phone"><b>Mobile</b></label>
+			<input style="margin-left:31px" type="text" placeholder="Enter Mobile" name="phone" required>
+</div>
+			<div class="clearfix" style:"text-align:center">
+				<button type="button" class="cancelbtn">Cancel</button>
+				<button type="submit" class="signupbtn">Sign Up</button>
+			</div>
+		</div>
+	</form>
+</body>
+
+</html>
