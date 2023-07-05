@@ -8,7 +8,10 @@ Welcome Page
 
 <img width="956" alt="Screenshot 2023-07-05 122101" src="https://github.com/vikasgithubb/springboot-login/assets/71481058/c8f83dfd-2fb5-40a7-b03f-b500c008faf5">
 
- once user click on signup all the details will be stored in db2 with the help of JPA and also password gets encoded with Bcrypt.
+
+
+
+once user click on signup all the details will be stored in db2 with the help of JPA and also password gets encoded with Bcrypt.
 <img width="680" alt="image" src="https://github.com/vikasgithubb/springboot-login/assets/71481058/ebefe871-b8a8-4cc8-aaec-441775fa7d46">
 
 
