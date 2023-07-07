@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,10 +22,13 @@ import com.restsimple.demo.repository.UserRepository;
 
 @Controller
 public class RegistrationController {
+	
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
      
 	
 	private UserRepository userRepo;
 	private PasswordEncoder passwordEncoder;
+	BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
 	public RegistrationController(UserRepository userRepo, PasswordEncoder passwordEncoder) {
 		this.userRepo = userRepo;
@@ -68,21 +74,30 @@ public class RegistrationController {
 	@PostMapping("/login")
 	public String login_user(@RequestParam("username") String username, @RequestParam("password") String password,
 			HttpSession session, ModelMap modelMap) {
+		
+		
 
-		User auser = userRepo.findByUsernamePassword(username, password);
+		
+		
+		User auser = userRepo.findByUsername(username);
+		logger.info(auser.toString());
+		
 
 		if (auser != null) {
-			String uname = auser.getUsername();
+			String uname = auser.getEmail();
 			String upass = auser.getPassword();
 
-			if (username.equalsIgnoreCase(uname) && password.equalsIgnoreCase(upass)) {
+			if (username.equalsIgnoreCase(uname) && bCryptPasswordEncoder.matches(password, upass)) {
+				logger.info("dataemail : "+uname +"  "+ "enemail" + username);
 				session.setAttribute("username", username);
 				return "dummy";
 			} else {
 				modelMap.put("error", "Invalid Account");
 				return "login";
 			}
-		} else {
+		} 
+		
+		else {
 			modelMap.put("error", "Invalid Account");
 			return "login";
 		}
