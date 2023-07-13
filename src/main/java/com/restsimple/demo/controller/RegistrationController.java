@@ -30,7 +30,7 @@ public class RegistrationController {
 
 	@Autowired
 	public MyEmailService myEmailService;
-	
+
 	@Autowired
 	public OtpController otpController;
 
@@ -106,8 +106,7 @@ public class RegistrationController {
 			}
 		}
 
-		else {
-			modelMap.put("error", "Invalid Account");
+		else{
 			return "login";
 		}
 
